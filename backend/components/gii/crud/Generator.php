@@ -12,5 +12,3 @@
 
 namespace backend\components\gii\crud;
 
-use yii;
-use ReflectionClass;
