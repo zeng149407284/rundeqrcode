@@ -19,6 +19,15 @@ if (!YII_ENV_TEST) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'generators' => [
+            'crud' => [
+                'class' => \backend\components\gii\crud\Generator::className(),
+                'templates' => [
+                    'default' => '@backend/components/gii/crud/default',
+                    'yii' => '@vendor/yiisoft/yii2-gii/generators/crud/default',
+                ],
+            ],
+        ],
     ];
 }
 
