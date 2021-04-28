@@ -13,4 +13,19 @@ return [
     \common\services\MenuServiceInterface::ServiceName => [
         'class' => \common\services\MenuService::className(),
     ],
+    \common\services\MenuServiceInterface::ServiceName => [
+        'class' => \common\services\MenuService::className(),
+    ],
+    \common\services\MenuServiceInterface::ServiceName => [
+        'class' => \common\services\MenuService::className(),
+    ],
+    \common\services\MenuServiceInterface::ServiceName => [
+        'class' => \common\services\MenuService::className(),
+    ],
+    \common\services\MenuServiceInterface::ServiceName => [
+        'class' => \common\services\MenuService::className(),
+    ],
+    \common\services\MenuServiceInterface::ServiceName => [
+        'class' => \common\services\MenuService::className(),
+    ],
 ];

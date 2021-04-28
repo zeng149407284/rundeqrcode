@@ -33,9 +33,10 @@ $actionParamComments = $generator->generateActionParamComments();
 echo "<?php\n";
 ?>
 
-namespace <?= StringHelper::dirname(ltrim($generator->controllerClass,'\\')) ?>
+namespace <?= StringHelper::dirname(ltrim($generator->controllerClass,'\\')) ?>;
 
 use Yii;
+use yii\web\Controller;
 use common\services\<?= $modelClass ?>ServiceInterface;
 use common\services\<?= $modelClass ?>Service;
 use backend\actions\CreateAction;
@@ -48,12 +49,11 @@ use backend\actions\ViewAction;
 <?php if (empty($generator->searchModelClass)){ ?>
 use yii\data\ActiveDataProvider;
 <?php } ?>
-<?php $category = Yii::t("app", Inflector::pluralize(
-    Inflector::camel2words(StringHelper::basename($generator->modelClass)))); ?>
+<?php $category = Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass))); ?>
 <?php 
     $idSign = "";
     $closureIdParam = "";
-    if (empty($pks)) {
+    if (!empty($pks)) {
         $idSign = "                'primaryKeyIdentity' => ";
         if (count($pks) === 1) {
             if ($pks[0] !== "id") {
@@ -82,11 +82,10 @@ use yii\data\ActiveDataProvider;
     }
 ?>
 /**
- *?<?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
+ * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
  */
 
-class <?= $controllerClass ?> extends 
-    \yii\web\<?= StringHelper::basename($generator->baseControllerClass) . "\n" ?>
+class <?= $controllerClass ?> extends Controller
 {
     /**
      * @auth

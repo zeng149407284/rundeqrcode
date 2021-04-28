@@ -1,7 +1,9 @@
 <?php
 
-namespace app\controllers
+namespace backend\controllers;
+
 use Yii;
+use yii\web\Controller;
 use common\services\MenuServiceInterface;
 use common\services\MenuService;
 use backend\actions\CreateAction;
@@ -12,11 +14,10 @@ use backend\actions\SortAction;
 use backend\actions\ViewAction;
 
 /**
- *?MenuController implements the CRUD actions for Menu model.
+ * MenuController implements the CRUD actions for Menu model.
  */
 
-class MenuController extends 
-    \yii\web\Controller
+class MenuController extends Controller
 {
     /**
      * @auth
@@ -57,11 +58,11 @@ class MenuController extends
             ],
             'update' => [
                 'class' => UpdateAction::className(),
-                                'doUpdate' => function(                                        $postData, $updateAction) use($service) {
-                    return $service->update(,$postData);
+                                'doUpdate' => function($id,                                         $postData, $updateAction) use($service) {
+                    return $service->update($id,$postData);
                 },
-                'data' => function(                                        $updateResultModel, $updateAction) use($service) {
-                    $model = $updateResultModel == null ? $service->getDetail() : $updateResultModel;
+                'data' => function($id,                                         $updateResultModel, $updateAction) use($service) {
+                    $model = $updateResultModel == null ? $service->getDetail($id) : $updateResultModel;
                     return [
                         'model' => $model;
                     ];
@@ -69,8 +70,8 @@ class MenuController extends
             ],
             'delete' => [
                 'class' => DeleteAction::className(),
-                                'doDelete' => function(                                        $deleteAction) use($service){
-                    return $service->delete();
+                                'doDelete' => function($id,                                         $deleteAction) use($service){
+                    return $service->delete($id);
                 },
             ],
             'sort' => [
@@ -81,9 +82,9 @@ class MenuController extends
             ],
             'view-layer' => [
                 'class' => ViewAction::className();
-                                'data' => function(                                        $viewAction) use($service){
+                                'data' => function($id,                                         $viewAction) use($service){
                     return [
-                        'model' => $service=>getDetail(),
+                        'model' => $service=>getDetail($id),
                     ];
                 },
             ],
