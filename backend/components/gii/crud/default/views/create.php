@@ -24,10 +24,10 @@ use yii\helper\Url;
 /** @var $model <?= ltrim($generator->modelClass, '\\') ?> */
 
 $this->params['breadcrumbs'] = [
-    ['label' => yii::t('app', '<?=Inflector::camel2words(StringHelper::basename($generator->modelClass))?>'),
+    ['label' => '<?=Inflector::camel2words(StringHelper::basename($generator->modelClass))?>',
      'url' => Url::to(['index'])],
-    ['label' => yii::t('app', 'Create') . 
-     yii::t('app', '<?=Inflector::camel2words(StringHelper::basename($generator->modelClass))?>')],
+    ['label' => 'Create' . 
+    '<?=Inflector::camel2words(StringHelper::basename($generator->modelClass))?>'],
 ];
 ?>
 <?="<?= " ?>$this->render('_form', [

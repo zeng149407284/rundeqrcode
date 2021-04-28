@@ -28,7 +28,7 @@ use <?=$generator->indexWidgetType === 'grid' ? "backend\\grid\\GridView" : "yii
 
 /** @var $this yii\web\View */
 <?=!empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
-$this->params['breadcrumbs'][] = yii::t('app', '<?=Inflector::camel2words(StringHelper::basename($generator->modelClass))?>')
+$this->params['breadcrumbs'][] = '<?=Inflector::camel2words(StringHelper::basename($generator->modelClass))?>'
 ?>
 <div class="row">
     <div class="col-sm-12">

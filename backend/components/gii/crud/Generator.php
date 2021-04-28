@@ -56,12 +56,12 @@ class Generator extends CrudGenerator
         $controllerFile = Yii::getAlias('@' . str_replace('\\', '/', 
             ltrim($this->controllerClass, '\\')) . '.php');
         $files = [
-            new CodeFile($controllerFile, $this->render('controller.php')),
+            new CodeFile($controllerFile, $this->render('controller.php'))
         ];
 
         if (!empty($this->searchModelClass)) {
             $searchModel = Yii::getAlias('@' . str_replace('\\', '/', 
-            ltrim($this->controllerClass, '\\')) . '.php');
+            ltrim($this->searchModelClass, '\\')) . '.php');
             $files[] = new CodeFile($searchModel, $this->render('search.php'));
         }
 
@@ -70,7 +70,7 @@ class Generator extends CrudGenerator
         $files[] = new CodeFile(Yii::getAlias("@common/services/") . $modelClass . 
             'ServiceInterface.php', $this->render("serviceInterface.php"));
         
-        $files[] = new CodeFile(("@common/services/") . $modelClass . 
+        $files[] = new CodeFile(Yii::getAlias("@common/services/") . $modelClass . 
             'Service.php', $this->render("service.php"));
         
         $viewPath = $this->getViewPath();
@@ -88,7 +88,7 @@ class Generator extends CrudGenerator
             $services = require Yii::getAlias("@common/config/") . 'services.php';
             $key = $modelClass . "Service";
             if (!isset($services[$key])) {
-                $str = file_get_contents(Yii::getAlias("@common/config/") . 'service.php');
+                $str = file_get_contents(Yii::getAlias("@common/config/") . 'services.php');
                 $lines = explode("\n", $str);
                 foreach ($lines as $key => $line) {
                     $line = trim($line);

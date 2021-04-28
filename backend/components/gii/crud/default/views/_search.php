@@ -45,10 +45,10 @@ foreach ($generator->getColumnNames() as $attribute) {
 ?>
     <div class="col-sm-3">
         <div class="col-sm-6">
-            <?= "<?= " ?>Html::submitButton(Yii::t("app", <?=$generator->generateString('Search')?>), ['class' => 'btn btn-primary btn-block']) ?>
+            <?= "<?= " ?>Html::submitButton(<?=$generator->generateString('Search')?>, ['class' => 'btn btn-primary btn-block']) ?>
         </div>
         <div class="col-sm-6">
-            <?= "<?= "?>Html::a(Yii::t("app", <?=$generator->generateString('Reset')?>), Url::to(['index']), ['class' => 'btn btn-default btn-block']) ?>
+            <?= "<?= "?>Html::a(<?=$generator->generateString('Reset')?>, Url::to(['index']), ['class' => 'btn btn-default btn-block']) ?>
         </div>
     </div>
     <?= "<?php "?>ActiveForm::end(); ?>
