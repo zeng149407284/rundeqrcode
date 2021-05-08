@@ -137,7 +137,7 @@ class <?= $controllerClass ?> extends Controller
                                         $updateResultModel, $updateAction) use($service) {
                     $model = $updateResultModel == null ? $service->getDetail(<?=$closureIdParam?>) : $updateResultModel;
                     return [
-                        'model' => $model;
+                        'model' => $model,
                     ];
                 },
             ],
@@ -156,12 +156,12 @@ class <?= $controllerClass ?> extends Controller
                 }
             ],
             'view-layer' => [
-                'class' => ViewAction::className();
+                'class' => ViewAction::className(),
                 <?php if(!empty($idSign)) echo $idSign; ?>
                 'data' => function(<?php if (!empty($closureIdParam)) {echo $closureIdParam;echo ", ";} ?>
                                         $viewAction) use($service){
                     return [
-                        'model' => $service=>getDetail(<?=$closureIdParam?>),
+                        'model' => $service->getDetail(<?=$closureIdParam?>),
                     ];
                 },
             ],

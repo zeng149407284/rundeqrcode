@@ -64,7 +64,7 @@ class MenuController extends Controller
                 'data' => function($id,                                         $updateResultModel, $updateAction) use($service) {
                     $model = $updateResultModel == null ? $service->getDetail($id) : $updateResultModel;
                     return [
-                        'model' => $model;
+                        'model' => $model,
                     ];
                 },
             ],
@@ -81,10 +81,10 @@ class MenuController extends Controller
                 }
             ],
             'view-layer' => [
-                'class' => ViewAction::className();
+                'class' => ViewAction::className(),
                                 'data' => function($id,                                         $viewAction) use($service){
                     return [
-                        'model' => $service=>getDetail($id),
+                        'model' => $service->getDetail($id),
                     ];
                 },
             ],
